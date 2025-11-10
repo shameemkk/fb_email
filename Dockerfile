@@ -35,4 +35,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the application with PM2 Runtime (preserves worker on crashes)
-CMD ["npx", "pm2-runtime", "--max-restarts", "5", "index.js"]
+CMD ["npx", "pm2-runtime", "--max-restarts", "5", "scrape.js"]
