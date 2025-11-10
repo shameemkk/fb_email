@@ -171,6 +171,11 @@ async function scrapeEmail(url, browserPool) {
 
 		// Strategy 1: Find all spans containing '@' symbol
 		const spans = await page.locator("//span[contains(text(), '@')]").all();
+		if (spans){
+			console.log("spans");
+		}else{
+			console.log("no spans");
+		}
 		for (const span of spans) {
 			const text = (await span.textContent()).trim();
 			if (EMAIL_REGEX.test(text)) {
@@ -186,7 +191,7 @@ async function scrapeEmail(url, browserPool) {
 				emails.add(match[0]);
 			}
 		}
-
+		console.log(emails);
 		await context.close();
 		browserPool.releaseBrowser(browser);
 
